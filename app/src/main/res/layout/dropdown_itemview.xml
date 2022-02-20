@@ -1,0 +1,16 @@
+<TextView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_dropdown_menu"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:text="@string/gender"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:padding="10dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+
+

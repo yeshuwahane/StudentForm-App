@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddStudentActivity">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="106dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/icon_profile"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/et_student_name"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/curved_corners"
+        android:drawableStart="@drawable/icon_profile"
+        android:drawablePadding="10dp"
+        android:drawableTintMode="add"
+        android:gravity="center"
+        android:hint="@string/student_name"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_image" />
+
+
+    <EditText
+        android:id="@+id/et_email_id"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/curved_corners"
+        android:drawableStart="@drawable/icon_mail"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:hint="@string/email_id"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_student_name" />
+
+
+    <EditText
+        android:id="@+id/et_birthday"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/curved_corners"
+        android:drawableStart="@drawable/icon_calender"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:hint="@string/birthday"
+        android:imeOptions="actionDone"
+        android:inputType="date"
+        android:padding="8dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_email_id" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_dropdown_menu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_birthday">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoComplete_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/curved_corners"
+            android:drawableStart="@drawable/icon_gender"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/gender"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
+            android:textColor="@color/teal_200"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_proceed"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="30dp"
+        android:text="@string/proceed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_dropdown_menu" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
