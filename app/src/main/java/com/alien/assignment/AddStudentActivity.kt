@@ -1,5 +1,6 @@
 package com.alien.assignment
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -10,9 +11,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.alien.assignment.databinding.ActivityMainBinding
 import com.alien.assignment.model.Student
+import com.bumptech.glide.Glide
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
 import java.io.IOException
+import java.util.*
 
 
 class AddStudentActivity : AppCompatActivity() {
@@ -59,7 +65,9 @@ class AddStudentActivity : AppCompatActivity() {
                     .getReference("Students") // storing the data using path as reference to the table of firebase database
                 val students = Student(studentName, emailId, birthDate, gender)
                 database.child(studentName).setValue(students).addOnSuccessListener {
-                    Toast.makeText(this, "Data saved Successful", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this, "Data saved Successful", Toast.LENGTH_SHORT).show()
+
+                    uploadImage(studentName)
 
                     // After data successfully saved clear all the editText Fields
                     binding.etStudentName.text.clear()
@@ -79,10 +87,22 @@ class AddStudentActivity : AppCompatActivity() {
         }
     }
 
-    private fun uploadImage() {
-        /**
-         * TODO upload image in firebase
-         * */
+    private fun uploadImage(studentName: String) {
+        val storageRef = FirebaseStorage.getInstance().getReference("Students/$studentName")
+        filePath?.let { storageRef.putFile(it) }?.addOnSuccessListener {
+            binding.profileImage.setImageURI(null)
+
+            Toast.makeText(this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show()
+        }?.addOnFailureListener{
+
+            Toast.makeText(this, "Failed to upload image", Toast.LENGTH_SHORT).show()
+        }
+
+
+
+
+
+
     }
 
     //function for selecting the image from file storage
@@ -113,8 +133,7 @@ class AddStudentActivity : AppCompatActivity() {
             try {
 
                 // Setting image on image view using Bitmap
-                val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filePath)
-                binding.profileImage.setImageBitmap(bitmap)
+                Glide.with(this).load(Uri.parse(filePath.toString())).into(binding.profileImage)
 
             } catch (e: IOException) {
                 // Log the exception

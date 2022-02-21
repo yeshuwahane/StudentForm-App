@@ -41,6 +41,7 @@ class StudentAdapter(val context: Context) : RecyclerView.Adapter<StudentAdapter
         holder.binding.tvEmail.text = data[position].emailId
         holder.binding.tvBirthdate.text = data[position].birthDate
         holder.binding.tvGender.text = data[position].gender
+        holder.binding.ivProfileImage.setImageBitmap(data[position].bitmap)
 
     }
 
