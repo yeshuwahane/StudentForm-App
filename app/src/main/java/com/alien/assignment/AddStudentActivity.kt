@@ -46,14 +46,20 @@ class AddStudentActivity : AppCompatActivity() {
             val gender = selectedGender
 
 
-            if (studentName.isEmpty() || emailId.isEmpty() || birthDate.isEmpty() || gender.isEmpty()) {
-                Toast.makeText(this, "Please enter student name", Toast.LENGTH_SHORT).show()
+            if (studentName.isEmpty() || emailId.isEmpty() || birthDate.isEmpty() || gender.isNullOrBlank()) {
+                Toast.makeText(this, "Please fill the all information", Toast.LENGTH_SHORT).show()
             } else {
 
                 database = FirebaseDatabase.getInstance().getReference("Students")
                 val students = Student(studentName, emailId, birthDate, gender)
                 database.child(studentName).setValue(students).addOnSuccessListener {
                     Toast.makeText(this, "Data saved Successful", Toast.LENGTH_SHORT).show()
+
+                    binding.etStudentName.text.clear()
+                    binding.etEmailId.text.clear()
+                    binding.etBirthday.text.clear()
+                    binding.autoCompleteTextView.text.clear()
+
 
                     //scope Function for intent
                     Intent(this, ShowStudentActivity::class.java).apply {
