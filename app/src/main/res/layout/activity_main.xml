@@ -7,6 +7,8 @@
     tools:context=".AddStudentActivity">
 
 
+
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="106dp"
@@ -64,7 +66,7 @@
         android:drawableStart="@drawable/icon_calender"
         android:drawablePadding="10dp"
         android:gravity="center"
-        android:hint="@string/birthday"
+        android:hint="mm/dd/yyyy"
         android:imeOptions="actionDone"
         android:inputType="date"
         android:padding="8dp"
